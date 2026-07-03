@@ -44,26 +44,62 @@
         );
       }
 
+      function ChatMessages(){
+        const ChatMessages= [
+          {
+            message: "hello chatbot",
+            sender: "user",
+            id: 'id1'
+          },
+          {
+            message: "Hello! How can I help you?",
+            sender: "bot",
+            id:'id2'
+          },
+          {
+            message: "can you get me todays date?",
+            sender: "user",
+            id:'id3'
+          },
+          {
+            message: "Today is July 4",
+            sender: "bot",
+            id:'id4'
+          }
+        ];
+
+        function sendMessage() {
+          ChatMessages.push({
+            message:'test',
+            sender:'user',
+            id: crypto.randomUUID()
+          });
+
+          console.log(ChatMessages);
+        }
+        return (
+          <>
+          <button onClick={sendMessage }>Send message</button>
+        {ChatMessages.map((chatMessage) => {
+              return (
+                <ChatMessage
+                  message={chatMessage.message}
+                  sender={chatMessage.sender}
+                  key= {chatMessage.id}
+                />
+              );
+            })}
+          </>
+        );
+
+      }
+
       function App() {
+        
         return (
           <>
             <ChatInput />
-            <ChatMessage
-              message="hello chatbot"
-              sender="user"
-            />
-            <ChatMessage
-              message="Hello! How can I help you?"
-              sender="bot"
-            />
-            <ChatMessage
-              message="can you get me todays date?"
-              sender="user"
-            />
-            <ChatMessage
-              message="Today is September 27"
-              sender="bot"
-            />
+            <ChatMessages/>
           </>
         );
       }
