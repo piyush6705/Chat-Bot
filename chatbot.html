@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat Bot</title>
   <style>
+    body{
+      font-family: Arial;
+    }
     .send-button{
       background-color: rgb(25,135,84);
       color: white;
@@ -38,9 +41,37 @@
     .chat-message-user{
       display: flex;
       justify-content: end;
+      align-items: start;
+    }
+    .chat-message-robot{
+      display: flex;
+      align-items: start;
     }
 
     .user-profile {
+      margin-top: 10px;
+      width: 50px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      object-position: center;
+    }
+
+    .chat-message-text {
+      margin-top: 10px;
+      margin-right: 10px;
+      margin-left: 10px;
+      background-color: rgb(238, 238, 238);
+      padding: 15px 20px;
+      border-radius: 10px;
+      max-width: 300px;
+      width: fit-content;
+      word-wrap: break-word;
+    }
+
+    .bot-profile{
+      margin-top: 10px;
       width: 50px;
       height: 48px;
       border-radius: 50%;
@@ -119,9 +150,11 @@
               : 'chat-message-robot'
           }>
             {sender === 'bot' && (
-              <img src="robot.png" width="50" />
+              <img src="robot.png" width="50" className="bot-profile"/>
             )}
-            {message}
+            <div className="chat-message-text">
+             {message}
+            </div>
             {sender === 'user' && (
               <img src="me.png" width="50" className="user-profile" />
             )}
