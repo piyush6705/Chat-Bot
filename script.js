@@ -11,7 +11,8 @@ function ChatInput({chatMessages,setChatMessages}) {
         setInputText(event.target.value);
       }
 
-      function sendMessage() {
+      async function sendMessage() {
+        setInputText('');
         const newChatMessages= [
             ...chatMessages,
             {
@@ -21,9 +22,17 @@ function ChatInput({chatMessages,setChatMessages}) {
             }
           ]
 
-        setChatMessages(newChatMessages);
+        setChatMessages([
+            ...newChatMessages,
+          
+          {
+              message: <img src="loading-spinner.gif" className="loading-spinner" />,
+              sender: 'robot',
+              id: crypto.randomUUID()
+            }
+          ]);
 
-          const response = Chatbot.getResponse(inputText);
+          const response = await Chatbot.getResponseAsync(inputText);
           setChatMessages([
             ...newChatMessages,
             {
@@ -32,20 +41,21 @@ function ChatInput({chatMessages,setChatMessages}) {
               id: crypto.randomUUID()
             }
           ]);
+        }
 
-
-          setInputText('');
-      }
         return (
           <div className="chat-input-container">
             <input
               placeholder="Send a message to Chatbot"
               size="30"
-              onChange= {saveInputText}
+              onChange={saveInputText}
               value={inputText}
               className="chat-input"
             />
-            <button onClick={sendMessage} className="send-button">Send</button>
+            <button
+              onClick={sendMessage}
+              className="send-button"
+            >Send</button>
           </div>
         );
       }
