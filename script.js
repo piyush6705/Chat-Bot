@@ -102,14 +102,17 @@ function ChatInput({chatMessages,setChatMessages}) {
         
         return (
           <div className="app-container">
-            
+            {chatMessages.length === 0 && (
+              <p className="welcome-message">
+                Welcome to the chatbot project! Send a message using the textbox below.
+              </p>
+            )}
             <ChatMessages
-              chatMessages ={chatMessages}
+              chatMessages={chatMessages}
             />
-
-            <ChatInput 
-              chatMessages ={chatMessages}
-              setChatMessages ={setChatMessages}
+            <ChatInput
+              chatMessages={chatMessages}
+              setChatMessages={setChatMessages}
             />
           </div>
         );
