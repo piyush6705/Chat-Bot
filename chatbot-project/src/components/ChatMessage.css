@@ -1,0 +1,40 @@
+      .chat-message-user {
+        
+        display: flex;
+        justify-content: end;
+        align-items: start;
+      }
+
+      .chat-message-robot {
+        display: flex;
+        align-items: start;
+      }
+
+      .chat-message-text {
+        background-color: rgb(238, 238, 238);
+        padding: 15px 20px;
+        border-radius: 10px;
+        
+        margin: 10px;
+        margin-bottom: 20px;
+        max-width: 300px;
+      }
+
+      .bot-profile{
+      margin-top: 10px;
+      width: 50px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      object-position: center;
+    }
+    .user-profile {
+      margin-top: 10px;
+      width: 50px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      object-position: center;
+    }
